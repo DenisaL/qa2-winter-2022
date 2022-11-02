@@ -5,11 +5,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.time.Duration;
+import java.util.List;
 
 public class FirstSeleniumTest {
     private final By ACCEPT_COOKIES_BTN = By.id("onetrust-accept-btn-handler");
-
 
     @Test
     public void openHomePageCheck() {
@@ -22,11 +23,6 @@ public class FirstSeleniumTest {
 
         wait.until(ExpectedConditions.elementToBeClickable(ACCEPT_COOKIES_BTN));
         browser.findElement(ACCEPT_COOKIES_BTN).click();
-
-
-
-
-
 
     }
 }
