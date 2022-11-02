@@ -30,6 +30,11 @@ public class Rental {
     private final By GASOLINE = By.xpath(".//label[contains(@for, 'fuel-type-ft-V')]");
     private final By SEATS = By.xpath(".//label[contains(@for, 'number-of-seats-seats-4')]");
 
+    private final By LOADING = By.xpath(".//div[contains(@class, 'lds-ellipsis v2')]");
+    private final By SEARCHING = By.xpath(".//div[contains(@class, 'mb-8 text-24 text-bold text-center')]");
+    private final By AVAILABLE = By.xpath(".//div[contains(@class, 'mb-24 text-center')]");
+
+
 
 
 
