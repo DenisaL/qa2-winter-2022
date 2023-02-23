@@ -1,5 +1,6 @@
 package pageobject.pages;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -21,6 +22,7 @@ public class PassengerInfoPage {
     private final By FINAL_BOOK = By.id("book3");
 
     private final By RESERVATION_INFO = By.xpath(".//span[@class = 'bTxt']");
+    private final By RESPONSE_BLOCK = By.id("response");
 
     private BaseFunc baseFunc;
 
@@ -39,6 +41,7 @@ public class PassengerInfoPage {
         baseFunc.type(BAG, bag);
         baseFunc.select(FLIGHT, flight);
         baseFunc.click(GET_PRICE_BTN);
+        baseFunc.waitForElementsCountToBe(RESERVATION_INFO, 5);
 
     }
 
@@ -63,8 +66,13 @@ public class PassengerInfoPage {
         return name.substring(0, name.length() - 1);
     }
 
+    public String getPrice() {
+        String text = baseFunc.findElement(RESPONSE_BLOCK).getText();
+        return StringUtils.substringBetween(text, "for "," Eur");
+    }
+
     public void bookFlight() {
-       baseFunc.click(BOOK);
+        baseFunc.click(BOOK);
     }
 
     public void seatSelector(String seat) {
