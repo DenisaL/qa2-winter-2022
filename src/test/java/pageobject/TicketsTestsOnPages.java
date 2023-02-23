@@ -44,6 +44,7 @@ public class TicketsTestsOnPages {
         Assertions.assertEquals(TO_AIRPORT, infoPage.getSecondDeparture(), "Error!");
         Assertions.assertEquals(TO_AIRPORT, infoPage.getSecondArrival(), "Error!");
 
+        Assertions.assertTrue(infoPage.getPrice().length() >  0, "Error message!");
     }
 
 }

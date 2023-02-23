@@ -48,6 +48,10 @@ public class BaseFunc {
         input.sendKeys(text);
     }
 
+    public WebElement findElement(By locator) {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
     public List<WebElement> elements(By locator) {
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         return browser.findElements(locator);
@@ -56,5 +60,9 @@ public class BaseFunc {
     public void printTextElement(By locator) {
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         System.out.println(browser.findElement(locator).getText());
+    }
+
+    public void waitForElementsCountToBe(By locator, int count) {
+       wait.until(ExpectedConditions.numberOfElementsToBe(locator, count));
     }
 }
