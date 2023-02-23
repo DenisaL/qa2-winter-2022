@@ -19,13 +19,18 @@ public class PassengerInfoPage {
     private final By BOOK = By.id("book2");
     private final By SEAT_NUMBERS = By.xpath(".//div[@class = 'seat']");
     private final By FINAL_BOOK = By.id("book3");
+
+    private final By RESERVATION_INFO = By.xpath(".//span[@class = 'bTxt']");
+
     private BaseFunc baseFunc;
 
     public PassengerInfoPage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
     }
 
-    public void passengerInfo(String first_name, String last_name, String discount, String adults, String children, String bag, String flight) {
+    public void passengerInfo(String first_name, String last_name, String discount, String adults, String children,
+                              String bag, String flight) {
+
         baseFunc.type(FIRST_NAME, first_name);
         baseFunc.type(LAST_NAME, last_name);
         baseFunc.type(DISCOUNT, discount);
@@ -33,10 +38,33 @@ public class PassengerInfoPage {
         baseFunc.type(CHILDREN, children);
         baseFunc.type(BAG, bag);
         baseFunc.select(FLIGHT, flight);
+        baseFunc.click(GET_PRICE_BTN);
+
+    }
+
+    public String getFirstDeparture() {
+        return baseFunc.elements(RESERVATION_INFO).get(0).getText();
+    }
+
+    public String getFirstArrival() {
+        return baseFunc.elements(RESERVATION_INFO).get(1).getText();
+    }
+
+    public String getSecondDeparture() {
+        return baseFunc.elements(RESERVATION_INFO).get(3).getText();
+    }
+
+    public String getSecondArrival() {
+        return baseFunc.elements(RESERVATION_INFO).get(4).getText();
+    }
+
+    public String getPassengerName() {
+        String name = baseFunc.elements(RESERVATION_INFO).get(2).getText();
+        return name.substring(0, name.length() - 1);
     }
 
     public void bookFlight() {
-        baseFunc.click(BOOK);
+       baseFunc.click(BOOK);
     }
 
     public void seatSelector(String seat) {
@@ -51,6 +79,8 @@ public class PassengerInfoPage {
             }
         }
         Assertions.assertTrue(isSeatFound, "Sit not found");
+
+
     }
 
     public void finalBook() {

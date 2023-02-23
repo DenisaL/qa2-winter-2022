@@ -1,5 +1,6 @@
 package pageobject;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pageobject.pages.FlightConfirmPage;
 import pageobject.pages.HomePage;
@@ -10,7 +11,7 @@ public class TicketsTestsOnPages {
     private final String FROM_AIRPORT = "RIX";
     private final String TO_AIRPORT = "SFO";
     private final String NAME = "Denisa";
-    private final String SURNAME = "Loseva";
+    private final String SURNAME = "Tester";
     private final String DISC = "Good discount";
     private final String GROWNUPS = "2";
     private final String KIDS = "1";
@@ -37,5 +38,12 @@ public class TicketsTestsOnPages {
         FlightConfirmPage flightConfirmPage = new FlightConfirmPage(baseFunc);
         flightConfirmPage.confirm();
 
+        Assertions.assertEquals(NAME, infoPage.getPassengerName(), "Wrong name!");
+        Assertions.assertEquals(FROM_AIRPORT, infoPage.getFirstDeparture(), "Error msg!");
+        Assertions.assertEquals(FROM_AIRPORT, infoPage.getFirstArrival(), "Error msg!");
+        Assertions.assertEquals(TO_AIRPORT, infoPage.getSecondDeparture(), "Error!");
+        Assertions.assertEquals(TO_AIRPORT, infoPage.getSecondArrival(), "Error!");
+
     }
+
 }

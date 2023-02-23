@@ -14,5 +14,6 @@ public class FlightConfirmPage {
 
     public void confirm() {
         baseFunc.printTextElement(FINAL_TEXT);
+
     }
 }
